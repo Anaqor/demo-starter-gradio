@@ -7,6 +7,6 @@ ENV GRADIO_SERVER_NAME=0.0.0.0
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-COPY python-starter/app.py app.py
+COPY app.py app.py
 
 CMD ["python", "app.py"]
