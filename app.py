@@ -7,7 +7,7 @@ consumer_secret = ""
 service_endpoint = "https://gateway.platform.planqk.de/anaqor/quantum-random-number-generator/1.0.0"
 
 
-title = "A Gradio Demo Example"
+title = "A Gradio Demo Example!"
 description = "This Demo is calling the [Quantum Random Number Generator](https://platform.planqk.de/marketplace/apis/88b46e18-3d5f-4674-ba04-0d3416c0decd). To try it out create an Application and subscribe to the service."
 
 
