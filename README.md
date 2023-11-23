@@ -18,6 +18,3 @@ conda activate gradio-apps
 
 gradio app.py
 ```
-
-
-
