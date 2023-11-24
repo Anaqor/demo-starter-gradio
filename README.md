@@ -7,7 +7,7 @@ The demo creates a web user interface to demonstrate the [Quantum Random Number 
 ## Try it out
 
 To run the demo subscribe to the [Quantum Random Number Generator](https://platform.planqk.de/marketplace/apis/88b46e18-3d5f-4674-ba04-0d3416c0decd) with an Application.
-Then add the credentials of your Application in the ```app.py```.
+Then add the credentials of your Application as environment variables. 
 
 Run it locally with: 
 
