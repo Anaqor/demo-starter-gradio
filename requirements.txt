@@ -1,2 +1,3 @@
 gradio
 planqk-service-sdk
+loguru

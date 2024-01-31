@@ -1,15 +1,21 @@
 import os
+import sys
 
 import gradio as gr
+from loguru import logger
 from planqk.service.client import PlanqkServiceClient
 
 # 1. Create a new Application on the PlanQK Platform.
 # 2. Subscribe to the Quantum Random Number Generator service via the PlanQK Marketplace.
-#     --> https://platform.planqk.de/marketplace/apis/88b46e18-3d5f-4674-ba04-0d3416c0decd
-# 3. Copy the Consumer Key and Consumer Secret of the Application.
+#    --> https://platform.planqk.de/marketplace/apis/88b46e18-3d5f-4674-ba04-0d3416c0decd
+# 3. Copy the Consumer Key and Consumer Secret of your Application.
 # 4. Set the environment variables CONSUMER_KEY and CONSUMER_SECRET to these values.
 #    4.1 If run locally, export the variables in the terminal before running `gradio app.py`.
 #    4.2 If run as a PlanQK Demo, modify the environment in the Demo Settings.
+
+logging_level = os.environ.get("LOG_LEVEL", "DEBUG")
+logger.configure(handlers=[{"sink": sys.stdout, "level": logging_level}])
+logger.info("Starting Gradio Demo")
 
 consumer_key = os.getenv("CONSUMER_KEY", None)
 consumer_secret = os.getenv("CONSUMER_SECRET", None)
@@ -28,10 +34,19 @@ def run(n_numbers: int):
     client = PlanqkServiceClient(service_endpoint, consumer_key, consumer_secret)
     data = {"n_numbers": n_numbers}
     params = {"n_bits": 4, "backend": "qasm_simulator"}
+
+    logger.info("Calling the service with data: {}", data)
+    logger.info("Calling the service with params: {}", params)
+
+    logger.info("Starting execution of the service...")
+
     job = client.start_execution(data=data, params=params)
     result = client.get_result(job.id)
+    logger.info("Received result from the service")
 
     random_number_list = result["result"]["random_number_list"]
+    logger.info("Random numbers: {}", random_number_list)
+
     return ", ".join([str(x) for x in random_number_list])
 
 
