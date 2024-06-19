@@ -1,3 +1,7 @@
+# PROJECT MOVED TO PlanQK organization
+
+**NOTICE:** This project has moved to the GitHub PlanQK organization for continued updates and development. You can find the latest version of this project at (https://github.com/PlanQK/planqk-demo-starter-gradio).
+
 # A PlanQK Demo Example using Gradio
 
 This is an example of a PlanQK Demo created with [Gradio](https://www.gradio.app).
